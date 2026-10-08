@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cuestionario de coaching · Roberto Rubio</title>
+<meta name="description" content="Cuestionario de atleta para conocer tu información y tu background deportivo.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cuestionario de coaching · Roberto Rubio">
+<meta property="og:description" content="Cuestionario de atleta para conocer tu información y tu background deportivo.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: una sola columna tipo hoja de inscripción; barra fija de 7 carriles marca el avance por sección; cada sección lleva su número como dorsal. */
+:root{
+  --bg:#EEF3F0; --surface:#FBFDFC; --ink:#11261F; --muted:#56695F; --line:#CBD8D0;
+  --green:#0E6B4E; --green-ink:#FFFFFF; --mark:#F3D54A; --mark-ink:#1B2A10; --warn-bg:#FFF1D6; --warn-ink:#6B4300;
+  --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0C1713; --surface:#14221C; --ink:#E6F0EA; --muted:#93A89C; --line:#2A3D34;
+  --green:#3FBF8F; --green-ink:#06231A; --mark:#E9C93A; --mark-ink:#1B2A10; --warn-bg:#3A2C0C; --warn-ink:#F6D58A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C1713; --surface:#14221C; --ink:#E6F0EA; --muted:#93A89C; --line:#2A3D34;
+  --green:#3FBF8F; --green-ink:#06231A; --mark:#E9C93A; --mark-ink:#1B2A10; --warn-bg:#3A2C0C; --warn-ink:#F6D58A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:720px;margin-inline:auto;display:flex;flex-direction:column;gap:28px}
+header.top{padding-block:36px 0;display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-family:var(--display);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:15px;color:var(--green)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(40px,9vw,64px);line-height:.95;margin:0;text-transform:uppercase;text-wrap:balance}
+h1 em{font-style:normal;background:var(--mark);color:var(--mark-ink);padding:0 .12em}
+.lead{color:var(--muted);max-width:60ch;margin:0}
+.lanes{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;display:flex;flex-direction:column;gap:6px}
+.lanes .row{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.lane{height:8px;background:var(--line);border-radius:2px;overflow:hidden}
+.lane i{display:block;height:100%;width:0;background:var(--green);transition:width .25s}
+.lanes small{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+section{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px 20px 26px;display:flex;flex-direction:column;gap:22px}
+.shead{display:flex;gap:14px;align-items:flex-start}
+.bib{font-family:var(--display);font-weight:700;font-size:26px;line-height:1;border:2px solid var(--ink);padding:6px 9px 5px;border-radius:3px;font-variant-numeric:tabular-nums;flex:none}
+.shead div{min-width:0}
+h2{font-family:var(--display);font-weight:700;font-size:28px;line-height:1.05;margin:0;text-transform:uppercase;letter-spacing:.01em}
+.shead p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.q{display:flex;flex-direction:column;gap:8px;border:0;padding:0;margin:0;min-width:0}
+.q>label,.q>legend{font-weight:600;padding:0}
+.q>legend{margin-bottom:8px}
+.hint{font-size:13px;color:var(--muted);font-weight:400;display:block;margin-top:2px}
+input[type=text],input[type=number],input[type=date],textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:11px 12px;width:100%;max-width:100%}
+textarea{min-height:84px;resize:vertical}
+.short{max-width:220px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 14px;font-size:15px;cursor:pointer;user-select:none}
+.chips input:checked+label{background:var(--mark);color:var(--mark-ink);border-color:var(--mark);font-weight:600}
+.chips input:focus-visible+label,input:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.note{background:var(--warn-bg);color:var(--warn-ink);border-radius:4px;padding:12px 14px;font-size:14px}
+.weeks{font-family:var(--display);font-weight:600;font-size:18px;color:var(--green);letter-spacing:.03em;text-transform:uppercase}
+.send textarea{min-height:220px;font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+button{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:12px 22px;cursor:pointer;border:2px solid var(--green);background:var(--green);color:var(--green-ink)}
+button.ghost{background:transparent;color:var(--green);font-size:16px;padding:10px 16px}
+#status{font-size:14px;color:var(--muted)}
+ol.how{margin:0;padding-left:20px;color:var(--muted);font-size:14px}
+@media (prefers-reduced-motion:reduce){.lane i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="eyebrow">Cuestionario de coaching · Roberto Rubio</span>
+    <h1>Antes de la <em>primera zancada</em></h1>
+    <p class="lead">Este cuestionario le dice a tu coach desde dónde empiezas, a dónde quieres llegar y cómo es tu semana. Toma unos 10 minutos. No hay respuestas correctas: contesta con lo que es cierto hoy y deja en blanco lo que no aplique.</p>
+  </header>
+  <div class="lanes" aria-hidden="true"><div class="row" id="lanes"></div><small id="prog"></small></div>
+  <form id="f" class="wrap" novalidate></form>
+  <section class="send">
+    <div class="shead"><span class="bib">META</span><div><h2>Envía tus respuestas</h2><p>Tu resumen se arma solo conforme contestas.</p></div></div>
+    <ol class="how"><li>Toca <b>Copiar respuestas</b>.</li><li>Pégalas en un mensaje (WhatsApp o correo) y envíaselo a tu coach.</li></ol>
+    <textarea id="out" readonly aria-label="Resumen de respuestas"></textarea>
+    <div class="actions"><button type="button" id="copy">Copiar respuestas</button><button type="button" class="ghost" id="reset">Borrar todo</button><span id="status" role="status"></span></div>
+  </section>
+</div>
+
+<script>
+const DAYS=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+const runner=a=>a.exp&&a.exp!=='Nunca he corrido';
+const YN=['Sí','No'];
+const S=[
+{t:'Sobre ti',d:'Lo básico para ubicarte.',q:[
+ {id:'nombre',l:'Nombre completo',y:'text'},
+ {g:[{id:'edad',l:'Edad',y:'number'},{id:'estatura',l:'Estatura (cm)',y:'number'},{id:'peso',l:'Peso (kg)',h:'Opcional',y:'number'}]},
+ {id:'ciudad',l:'¿En qué ciudad o zona vas a entrenar?',h:'La altitud y el clima cambian el ritmo que te toca.',y:'text'}
+]},
+{t:'Tu objetivo',d:'Todo el plan se construye hacia atrás desde aquí.',q:[
+ {id:'objetivo',l:'¿Qué buscas principalmente?',y:'one',o:['Terminar mi primera carrera','Mejorar mi tiempo','Salud y sentirme mejor','Bajar de peso','Otro']},
+ {id:'carrera',l:'Carrera objetivo',h:'Nombre del evento, si ya lo tienes.',y:'text'},
+ {id:'distancia',l:'Distancia',y:'one',o:['5 km','10 km','21 km','42 km','Otra']},
+ {id:'fecha',l:'Fecha de la carrera',y:'date'},
+ {id:'meta',l:'¿Tienes un tiempo en mente?',h:'Ej. "solo terminar", "sin caminar", "menos de 40 min".',y:'text'},
+ {id:'porque',l:'¿Qué significaría para ti lograrlo?',y:'area'}
+]},
+{t:'Tu punto de partida',d:'Sé honesta/o: empezar de más es la causa número uno de lesión.',q:[
+ {id:'exp',l:'Tu experiencia corriendo',y:'one',o:['Nunca he corrido','Corrí antes pero lo dejé','Corro de vez en cuando','Corro seguido (3+ veces por semana)']},
+ {id:'activ',l:'¿Qué actividad física haces hoy?',h:'Marca todas las que apliquen.',y:'many',o:['Caminar','Gimnasio / pesas','Yoga / pilates','Natación','Bici','Baile o clases','Ninguna','Otra']},
+ {id:'frec',l:'¿Cuántos días por semana te ejercitas hoy?',y:'one',o:['0','1–2','3–4','5 o más']},
+ {id:'camina',l:'¿Cuánto puedes caminar a paso rápido sin parar?',y:'one',o:['Menos de 10 min','10–20 min','20–40 min','Más de 40 min']},
+ {id:'trota',l:'¿Cuánto puedes trotar sin parar?',y:'one',o:['No lo he intentado','Menos de 1 min','1–5 min','5–15 min','15–30 min','Más de 30 min']},
+ {id:'hist',l:'Describe tu actividad de los últimos 6 a 12 meses',h:'Qué hacías, cuántas veces por semana, si hubo pausas.',y:'area'},
+ {id:'tiempoCorr',l:'¿Hace cuánto corres?',y:'text',s:runner},
+ {g:[{id:'kmSem',l:'Km por semana (promedio, últimos 6 meses)',y:'number'},{id:'kmPico',l:'Tu semana más alta (km)',y:'number'},{id:'largo',l:'Tu carrera más larga (km)',y:'number'},{id:'diasCorr',l:'Días que corres por semana',y:'number'}],s:runner},
+ {g:[{id:'pb5',l:'Mejor 5K',y:'text'},{id:'pb10',l:'Mejor 10K',y:'text'},{id:'pb21',l:'Mejor 21K',y:'text'},{id:'pb42',l:'Mejor maratón',y:'text'}],s:runner},
+ {id:'natural',l:'¿Qué entrenamientos te salen más natural?',y:'one',o:['Largos y sostenidos (fondos, tempo, repeticiones de 800 m a 1 km)','Cortos y rápidos (200 y 400 m)','No lo sé todavía'],s:runner},
+ {id:'compite',l:'¿Cómo sueles correr una carrera?',y:'one',o:['Aguanto el ritmo, pero me rebasan en el cierre','Me cuesta la parte media, pero cierro fuerte','No he competido'],s:runner},
+ {id:'fortdeb',l:'Tus fortalezas y debilidades como corredor/a',y:'area',s:runner}
+]},
+{t:'Salud',d:'Confidencial. Solo lo ve tu coach y sirve para cuidarte.',q:[
+ {id:'s1',l:'¿Un médico te ha dicho que tienes un problema del corazón o presión alta?',y:'one',o:YN},
+ {id:'s2',l:'¿Sientes dolor en el pecho, mareo o falta de aire fuerte al hacer esfuerzo?',y:'one',o:YN},
+ {id:'s3',l:'¿Tienes un problema de huesos o articulaciones que empeore con el ejercicio?',y:'one',o:YN},
+ {id:'s4',l:'¿Tienes diabetes, asma u otra condición crónica?',y:'one',o:YN},
+ {note:'Marcaste "Sí" en al menos una pregunta. Coméntalo con tu médico antes de empezar; tu coach adaptará el plan a lo que te indique.',s:a=>['s1','s2','s3','s4'].some(k=>a[k]==='Sí')},
+ {id:'chequeo',l:'¿Te hiciste un chequeo médico en el último año?',y:'one',o:YN},
+ {id:'lesiones',l:'Lesiones, cirugías o molestias (pasadas y actuales)',h:'Rodillas, espalda, pies, cadera… y si hoy algo te duele.',y:'area'},
+ {id:'medic',l:'Medicamentos que tomas actualmente',y:'area'},
+ {id:'hormonal',l:'Etapa hormonal',h:'Opcional. Influye en la recuperación y en cómo se reparte la carga.',y:'one',o:['Ciclo menstrual regular','Perimenopausia','Menopausia','Embarazo o posparto','No aplica','Prefiero no decir']},
+ {id:'sueno',l:'¿Cuántas horas duermes normalmente?',y:'one',o:['Menos de 6','6–7','7–8','Más de 8']},
+ {id:'estres',l:'Tu nivel de estrés en una semana normal',y:'one',o:['Bajo','Medio','Alto']}
+]},
+{t:'Tu semana',d:'El mejor plan es el que cabe en tu vida real.',q:[
+ {id:'dias',l:'¿Qué días puedes entrenar?',y:'many',o:DAYS},
+ {id:'minutos',l:'Tiempo disponible por sesión',y:'one',o:['20–30 min','30–45 min','45–60 min','Más de 60 min']},
+ {id:'horario',l:'Horario preferido',y:'one',o:['Mañana','Mediodía','Tarde','Noche']},
+ {id:'descanso',l:'¿Qué días prefieres descansar?',y:'many',o:DAYS},
+ {id:'diaLargo',l:'Mejor día para la sesión más larga de la semana',y:'one',o:DAYS},
+ {id:'antesDesp',l:'¿Prefieres descansar antes o después de la sesión larga?',y:'one',o:['El día antes','El día después','Me da igual']},
+ {id:'lugar',l:'¿Dónde vas a entrenar?',y:'many',o:['Calle / banqueta','Parque o camino de tierra','Pista de atletismo','Caminadora','Subidas / cerros']},
+ {id:'compania',l:'¿Entrenarás acompañada/o?',y:'one',o:['Sola/o','Con alguien','A veces']}
+]},
+{t:'Tu equipo',d:'No necesitas comprar nada todavía.',q:[
+ {id:'tenis',l:'¿Tienes tenis para correr?',y:'one',o:['Sí, con menos de un año','Sí, pero ya viejos','No tengo']},
+ {id:'tenisMod',l:'Marca y modelo, si lo sabes',y:'text'},
+ {id:'gadgets',l:'¿Con qué puedes registrar tus entrenamientos?',y:'many',o:['Reloj con GPS','Apple Watch','App en el celular (Strava, Nike…)','Banda de pulso','Nada todavía']}
+]},
+{t:'Tu cabeza',d:'La parte que más pesa después de la tercera semana.',q:[
+ {id:'motiva',l:'¿Qué te motiva?',y:'area'},
+ {id:'insegura',l:'¿Qué te preocupa o te da inseguridad de este reto?',y:'area'},
+ {id:'valora',l:'¿Qué valoras o disfrutas de moverte y de correr?',y:'area'},
+ {id:'seguim',l:'¿Cómo prefieres el seguimiento?',y:'one',o:['Un mensaje después de cada entrenamiento','Un resumen semanal','Solo cuando yo pregunte']},
+ {id:'extra',l:'Algo más que tu coach deba saber',y:'area'}
+]}];
+
+const KEY='cuestionario-atleta-v1', f=document.getElementById('f'), out=document.getElementById('out');
+let A={};
+const flat=q=>q.g?q.g.map(x=>({...x,s:q.s})):[q];
+const hint=q=>q.h?`<span class="hint">${q.h}</span>`:'';
+function field(q){
+  if(q.y==='one'||q.y==='many'){
+    const t=q.y==='one'?'radio':'checkbox';
+    return `<fieldset class="q"><legend>${q.l}${hint(q)}</legend><div class="chips">`+
+      q.o.map((o,j)=>`<span><input type="${t}" name="${q.id}" id="${q.id}_${j}" value="${o}"><label for="${q.id}_${j}">${o}</label></span>`).join('')+`</div></fieldset>`;
+  }
+  const c=q.y==='area'?`<textarea id="${q.id}" name="${q.id}"></textarea>`:
+    `<input type="${q.y}" id="${q.id}" name="${q.id}"${q.y==='number'?' inputmode="decimal" min="0" step="any"':''}${q.y==='date'||q.y==='number'?' class="short"':''}>`;
+  return `<div class="q"><label for="${q.id}">${q.l}${hint(q)}</label>${c}${q.id==='fecha'?'<span class="weeks" id="weeks"></span>':''}</div>`;
+}
+f.innerHTML=S.map((s,i)=>`<section><div class="shead"><span class="bib">${String(i+1).padStart(2,'0')}</span><div><h2>${s.t}</h2><p>${s.d}</p></div></div>`+
+  s.q.map((q,k)=>{const inner=q.note?`<div class="note">${q.note}</div>`:q.g?`<div class="grid2">${q.g.map(field).join('')}</div>`:field(q);
+    return `<div data-b="${i}_${k}">${inner}</div>`}).join('')+`</section>`).join('');
+document.getElementById('lanes').innerHTML=S.map(()=>'<div class="lane"><i></i></div>').join('');
+
+function read(){
+  A={};
+  S.forEach(s=>s.q.forEach(b=>flat(b).forEach(q=>{ if(!q.id)return;
+    if(q.y==='one'){const e=f.querySelector(`input[name="${q.id}"]:checked`); if(e)A[q.id]=e.value;}
+    else if(q.y==='many'){const v=[...f.querySelectorAll(`input[name="${q.id}"]:checked`)].map(e=>e.value); if(v.length)A[q.id]=v;}
+    else{const v=f.elements[q.id].value.trim(); if(v)A[q.id]=v;}
+  })));
+}
+function apply(d){
+  Object.entries(d).forEach(([k,v])=>{
+    const els=f.querySelectorAll(`[name="${k}"]`); if(!els.length)return;
+    if(els[0].type==='radio'||els[0].type==='checkbox')els.forEach(e=>e.checked=[].concat(v).includes(e.value)); else els[0].value=v;
+  });
+}
+function fmtDate(v){const [y,m,d]=v.split('-');return `${d}/${m}/${y}`}
+function weeksTo(v){const ms=new Date(v+'T12:00:00')-new Date(); return ms/6048e5}
+function update(){
+  read();
+  let tot=0,done=0,txt=['CUESTIONARIO DE ATLETA'];
+  S.forEach((s,i)=>{
+    let n=0,ok=0,lines=[];
+    s.q.forEach((b,k)=>{
+      const show=!b.s||!!b.s(A); f.querySelector(`[data-b="${i}_${k}"]`).hidden=!show;
+      if(!show||b.note)return;
+      flat(b).forEach(q=>{n++; const v=A[q.id]; if(v===undefined)return; ok++;
+        lines.push(`• ${q.l}: ${Array.isArray(v)?v.join(', '):q.y==='date'?fmtDate(v):v}`);});
+    });
+    tot+=n;done+=ok;
+    document.querySelectorAll('.lane i')[i].style.width=(n?ok/n*100:0)+'%';
+    if(lines.length)txt.push('',`${i+1}. ${s.t.toUpperCase()}`,...lines);
+  });
+  const w=document.getElementById('weeks');
+  if(A.fecha){const k=weeksTo(A.fecha); w.textContent=k>0?`Faltan ${k<1?'menos de 1 semana':Math.round(k*10)/10+' semanas'}`:'Esa fecha ya pasó';
+    if(k>0)txt.splice(1,0,`Semanas a la carrera: ${Math.round(k*10)/10}`);} else w.textContent='';
+  document.getElementById('prog').textContent=`${done} de ${tot} respuestas`;
+  out.value=done?txt.join('\n'):'Aquí aparecerán tus respuestas.';
+  try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){}
+}
+const qs=new URLSearchParams(location.search), p={};
+[['n','nombre'],['o','objetivo'],['d','distancia'],['f','fecha']].forEach(([a,b])=>{if(qs.get(a))p[b]=qs.get(a)});
+let saved=null; try{saved=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
+apply({...(saved||{}),...p});
+update();
+f.addEventListener('input',update); f.addEventListener('change',update);
+f.addEventListener('submit',e=>e.preventDefault());
+const st=document.getElementById('status');
+document.getElementById('copy').addEventListener('click',()=>{
+  const done=()=>{st.textContent='Copiado. Pégalo en un mensaje para tu coach.'};
+  const fb=()=>{out.focus();out.select();st.textContent='Texto seleccionado: cópialo manualmente.'};
+  try{navigator.clipboard.writeText(out.value).then(done,fb)}catch(e){fb()}
+});
+let armed=false;
+document.getElementById('reset').addEventListener('click',e=>{
+  if(!armed){armed=true;e.target.textContent='¿Seguro? Toca otra vez';return}
+  armed=false;e.target.textContent='Borrar todo';f.reset();update();st.textContent='Respuestas borradas.';
+});
+</script>
+
+</body>
+</html>
